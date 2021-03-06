@@ -3,7 +3,7 @@ const SetReviews = () => {
     <div className="preLoadedReviews">
         <div className="reviewOne wrapper">
             <div className="userInfo">
-                <p><span>Farmacy Honey Halo Moisturizer</span></p>
+                <p><span>Product Name</span></p>
                 <p><span>March 5th, 2021</span></p>
                 <p><span>Sarah P</span></p>
             </div>
@@ -13,7 +13,7 @@ const SetReviews = () => {
         </div>
         <div className="reviewTwo wrapper">
             <div className="userInfo">
-                <p><span>Farmacy Honey Halo Moisturizer</span></p>
+                <p><span>Product Name</span></p>
                 <p><span>March 5th, 2021</span></p>
                 <p><span>Sarah P</span></p>
             </div>
