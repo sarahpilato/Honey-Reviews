@@ -1,38 +1,78 @@
-.App {
+html {
+  font-size: 62.5%;
+}
+
+h1,
+h2,
+h3,
+h4,
+li,
+a,
+ul,
+h2, 
+p,
+button,
+input{
+    margin: 0;
+    padding: 0;
+}
+
+body {
+  background-color: rgb(248, 236, 184);
+}
+
+h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 600;
+  font-style: italic;
+  font-size: 7rem;
+  text-align: center;
+  text-transform: uppercase;
+  margin-top: 20px;
+}
+
+h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 400;
+  font-size: 3.5rem;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+p {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 400;
+  font-size: 2rem;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+span {
+  font-weight: 600;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.wrapper {
+  max-width: 1280px;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.preLoadedReviews {
+  margin-top: 50px;
+}
+
+.reviewOne {
+  background-color: white;
+  padding: 15px;
+  margin-bottom: 30px;
+  box-shadow: rgb(233, 237, 247) -20px 20px;
+}
+
+.reviewTwo {
+  background-color: white;
+  padding: 15px;
+  box-shadow: rgb(233, 237, 247) -20px 20px;
+}
+
+.userInfo {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+  justify-content: space-around;
+  padding-bottom: 10px;
 }

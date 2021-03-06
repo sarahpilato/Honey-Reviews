@@ -1,12 +1,13 @@
-import logo from './logo.svg';
 import './App.css';
+import Header from './Header.js';
+import SetReviews from './SetReviews.js'
 
 function App() {
   return (
     <div className="App">
-      <h1>Honey</h1>
-      <h2>🍯 sweet skincare reviews🍯</h2>
-    </div>
+      <Header />
+      <SetReviews />
+      </div>
   );
 }
 
