@@ -7,6 +7,7 @@ import SetReviews from './SetReviews.js'
 
 function App() {
         const [reviews, setReviews] = useState([]);
+        const [userInput, setUserInput] = useState('');
         useEffect(() => {
         // reference our database and save that reference within a variable
           const dbRef = firebase.database().ref();
@@ -22,15 +23,34 @@ function App() {
             // .val() is a Firebase method that gets us the information we want
             const data = response.val();
 
-            //reviewLog is an object, so we iterate through it using a for in loop to access each book name 
+            //use a for in loop to access each review 
             for (let key in data) {
-              // inside the loop, we push each review to an array we already created inside the .on() function called reviewLog
+              // inside the loop, we push each review to an array we already created inside the .on() function 
               newState.push(data[key]);
             }
-            // then, we call setBooks in order to update our component's state using the local array newState
+            // then, we call setReviews in order to update our component's state using the local array newState
             setReviews(newState);
           });
         }, []);
+        // this event will fire every time there is a change in the input it is attached to
+        const handleChange = (event) => {
+          // we're telling React to update the state of our `App` component to be 
+          // equal to whatever is currently the value of the input field
+          setUserInput(event.target.value);
+        }
+        const handleClick = (event) => {
+          //event.preventDefault prevents the default action: form submission
+          event.preventDefault();
+
+          // // here, we create a reference to our database
+          const dbRef = firebase.database().ref();
+
+          // here we grab whatever value this.state.userInput has and push it to the database
+          dbRef.push(userInput);
+
+          // here we reset the state to an empty string
+          setUserInput('');
+        }
         
         return (
         <div className="App">
@@ -46,6 +66,16 @@ function App() {
                 )
               })}
             </ul>
+            <form action="submit">
+            <label htmlFor="newReview">Add a review!</label>
+            <input 
+              type="text" 
+              id="newReview"
+              onChange={handleChange}
+              value={userInput} 
+            />
+            <button onClick={handleClick}>Add Review</button>
+          </form>
           </div>
         </div>
         )
