@@ -3,6 +3,7 @@ import firebase from './firebase';
 import { useEffect, useState } from 'react';
 import Header from './Header.js';
 import SetReviews from './SetReviews.js'
+import Footer from './Footer.js'
 
 
 function App() {
@@ -67,7 +68,7 @@ function App() {
               })}
             </ul>
             <form action="submit">
-            <label htmlFor="newReview">Add a review!</label>
+            <label htmlFor="newReview"></label>
             <input 
               type="text" 
               id="newReview"
@@ -77,6 +78,7 @@ function App() {
             <button onClick={handleClick}>Add Review</button>
           </form>
           </div>
+          <Footer />
         </div>
         )
       }

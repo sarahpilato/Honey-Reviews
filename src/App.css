@@ -76,3 +76,13 @@ span {
   justify-content: space-around;
   padding-bottom: 10px;
 }
+
+footer {
+  margin-top: 50px;
+  text-align: center;
+}
+
+a {
+  color: rgb(99, 99, 99);
+  text-decoration: none;
+}
