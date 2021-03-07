@@ -1,86 +1,94 @@
 import './App.css';
+import React from 'react'
 import firebase from './firebase';
 import { useEffect, useState } from 'react';
 import Header from './Header.js';
 import SetReviews from './SetReviews.js'
+import ReviewData from './ReviewData.js'
 import Footer from './Footer.js'
 
 
 function App() {
-        const [reviews, setReviews] = useState([]);
-        const [userInput, setUserInput] = useState('');
-        useEffect(() => {
-        // reference our database and save that reference within a variable
-          const dbRef = firebase.database().ref();
-        // fire up our firebase event listener (using .on() method)
-        // this accepts a first argument of 'value' and a callback function within which we define what we wish to occur as the database updates
-          dbRef.on('value', (response) => {
-            // Here we use Firebase's .val() method to parse our database info the way we want it
-            // log out the information within the database 
-            console.log(response.val());
-            // Here we're creating a variable to store the new state we want to introduce to our app
-            const newState = [];
-            // Here we store the response from our query to Firebase inside of a variable
-            // .val() is a Firebase method that gets us the information we want
-            const data = response.val();
+  const [reviews, setReviews] = React.useState([]);
+  const [productName, setProductName] = React.useState("");
+  const [reviewDate, setReviewDate] = React.useState("");
+  const [userName, setUserName] = React.useState("");
+  const [userReview, setUserReview] = React.useState("");
+  const dbRef = firebase.database().ref();
 
-            //use a for in loop to access each review 
-            for (let key in data) {
-              // inside the loop, we push each review to an array we already created inside the .on() function 
-              newState.push(data[key]);
-            }
-            // then, we call setReviews in order to update our component's state using the local array newState
-            setReviews(newState);
-          });
-        }, []);
-        // this event will fire every time there is a change in the input it is attached to
-        const handleChange = (event) => {
-          // we're telling React to update the state of our `App` component to be 
-          // equal to whatever is currently the value of the input field
-          setUserInput(event.target.value);
-        }
-        const handleClick = (event) => {
-          //event.preventDefault prevents the default action: form submission
-          event.preventDefault();
+  useEffect(() => {
+  // reference our database and save that reference within a variable
 
-          // // here, we create a reference to our database
-          const dbRef = firebase.database().ref();
-
-          // here we grab whatever value this.state.userInput has and push it to the database
-          dbRef.push(userInput);
-
-          // here we reset the state to an empty string
-          setUserInput('');
-        }
-        
-        return (
-        <div className="App">
-          <Header />
-          <SetReviews />
-          <div>
-            <ul>
-              {reviews.map((review) => {
-                return (
-                  <li>
-                    <h2>{review}</h2>
-                  </li>
-                )
-              })}
-            </ul>
-            <form action="submit">
-            <label htmlFor="newReview"></label>
-            <input 
-              type="text" 
-              id="newReview"
-              onChange={handleChange}
-              value={userInput} 
-            />
-            <button onClick={handleClick}>Add Review</button>
-          </form>
-          </div>
-          <Footer />
-        </div>
-        )
+    dbRef.on('value', (response) => {
+      // setReviews(response.val())
+      // setReviews((prevReviews) => [...prevReviews, newReview]);
+      const reviewList = []
+      for (let key in response.val()) {
+        reviewList.push(response.val()[key])
       }
+      setReviews(reviewList)
+    })
+  }, []);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const newReview = { productName, reviewDate, userName, userReview }
+    dbRef.push(newReview)
+    setProductName('')
+    setReviewDate('')
+    setUserName('')
+    setUserReview('')
+  };
+
+    return (
+    <div className="App">
+      <Header />
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          name="name"
+          placeholder="Product Name"
+          value={productName}
+          onChange={(e) => setProductName(e.target.value)}
+        />
+        <input
+          type="text"
+          name="name"
+          placeholder="Date (month/date/year)"
+          value={reviewDate}
+          onChange={(e) => setReviewDate(e.target.value)}
+        />
+        <input
+          type="text"
+          placeholder="Name"
+          name="name"
+          value={userName}
+          onChange={(e) => setUserName(e.target.value)}
+        />
+        <textarea
+          value={userReview}
+          name="description"
+          placeholder="Let us know your thoughts!"
+          maxLength="1000"
+          onChange={(e) => setUserReview(e.target.value)}
+        ></textarea>
+        <button type="submit">Submit form</button>
+      </form>
+        {reviews.map((review) => {
+          return (
+            <>
+              <ReviewData
+                productName={review.productName}
+                reviewDate={review.reviewDate}
+                userName={review.userName}
+                userReview={review.userReview}
+              />
+              </>
+          );
+        })}
+      <Footer />
+    </div>
+  );
+}
 
 export default App;
