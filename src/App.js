@@ -48,7 +48,7 @@ function App() {
     return (
     <div className="App">
       <Header />
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="wrapper">
         <input
           type="text"
           name="name"
