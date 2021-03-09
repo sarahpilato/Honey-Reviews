@@ -72,16 +72,24 @@ span {
   margin: 0 auto;
 }
 
-.preLoadedReviews {
-  margin-top: 50px;
+.LoadedReviews {
+  margin-top: 20px;
 }
 
+h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 400;
+  font-size: 2.7rem;
+  text-align: center;
+  font-style: italic;
+  text-transform: uppercase;
+}
 .review {
   background-color: white;
   padding: 15px;
   margin-bottom: 30px;
   box-shadow: rgb(233, 237, 247) -20px 20px;
-  width: 70%;
+  width: 60%;
 }
 
 .review {
@@ -126,16 +134,16 @@ input[type=date] {
   padding-bottom: 10px;
   border: 1px solid rgb(233, 237, 247);
     padding: 15px 20px;
-    width: 70%;
+    width: 60%;
     margin-bottom: 20px;
     font-size: 1.5rem;
 }
 
 textarea {
   border: 1px solid rgb(233, 237, 247);
-  height: 200px;
+  height: 120px;
   resize: none;
-  width: 70%;
+  width: 60%;
   padding: 30px 0 10px 10px;
   font-size: 1.8rem;
 }
@@ -152,7 +160,7 @@ textarea::placeholder {
 
 button {
   margin: 30px 0;
-  width: 70%;
+  width: 60%;
   background: rgb(233, 237, 247);
   color: black; 
   border: none;
@@ -160,7 +168,7 @@ button {
   text-align: center;
   transition: background-color 0.3s ease-in-out;
   font-family: 'Cormorant Garamond', serif;
-  font-size: 2rem;
+  font-size: 2.3rem;
   line-height: 32px;
   letter-spacing: 1px;
   text-align: center;

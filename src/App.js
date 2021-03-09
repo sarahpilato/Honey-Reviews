@@ -86,6 +86,7 @@ function App() {
         ></textarea>
         <button type="submit">Submit form</button>
       </form>
+      <h3>Reviews</h3>
         {reviews.map((review) => {
           return (
             <>
