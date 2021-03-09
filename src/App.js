@@ -51,26 +51,33 @@ function App() {
       <form onSubmit={handleSubmit} className="wrapper">
         <input
           type="text"
+          required
           name="name"
           placeholder="Product Name"
           value={productName}
           onChange={(e) => setProductName(e.target.value)}
         />
         <input
-          type="text"
+          type="date"
+          required
           name="name"
-          placeholder="Date (month/date/year)"
+          value="2021-03-09"
+          min="2021-03-09" 
+          max="2030-12-31"
+          placeholder="Date"
           value={reviewDate}
           onChange={(e) => setReviewDate(e.target.value)}
         />
         <input
           type="text"
+          required
           placeholder="Name"
           name="name"
           value={userName}
           onChange={(e) => setUserName(e.target.value)}
         />
         <textarea
+          required
           value={userReview}
           name="description"
           placeholder="Let us know your thoughts!"

@@ -120,7 +120,8 @@ input {
   width: 100%;
 }
 
-input[type=text] {
+input[type=text],
+input[type=date] {
   padding-left: 10px;
   padding-bottom: 10px;
   border: 1px solid rgb(233, 237, 247);
