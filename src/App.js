@@ -84,7 +84,7 @@ function App() {
           maxLength="1000"
           onChange={(e) => setUserReview(e.target.value)}
         ></textarea>
-        <button type="submit">Submit form</button>
+        <button type="submit">Submit review!</button>
       </form>
       <h3>Reviews</h3>
         {reviews.map((review) => {
