@@ -174,3 +174,11 @@ button {
   text-align: center;
   text-transform: lowercase;
 }
+
+@media (max-width: 920px) {
+  .userInfo {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 10px;
+  }
+}
